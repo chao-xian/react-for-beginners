@@ -28,11 +28,23 @@ var App = React.createClass({
   },
 
   componentDidMount: function() {
-    // Sync state with Firebase back end for persistence for given store
+    // Pull out of Firebase back end for persistence for given store the fishes
     base.syncState(this.props.params.storeId + '/fishes', {
       context: this, // <App/>
       state: 'fishes'
     });
+
+    // Restore Orders state from localStorage
+    var localStorageRef = localStorage.getItem('order-' + this.props.params.storeId);
+    if (localStorageRef) {
+      this.setState({
+        order: JSON.parse(localStorageRef)
+      });
+    }
+  },
+
+  componentWillUpdate: function(nextProps, nextState) {
+    localStorage.setItem('order-' + this.props.params.storeId, JSON.stringify(nextState.order));
   },
 
   addToOrder: function(key) {
@@ -183,7 +195,7 @@ var Order = React.createClass({
     }
 
     return (
-      <li>
+      <li key={key}>
         <span>{count}</span>lbs
           {fish.name}
           <span className="price">{h.formatPrice(count * fish.price)}</span>
