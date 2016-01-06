@@ -16,10 +16,14 @@ var h = require('./helpers');
 var Rebase = require('re-base');
 var base = Rebase.createClass('https://blazing-inferno-2155.firebaseio.com/');
 
+var Catalyst = require('react-catalyst');
+
 /*
   App
 */
 var App = React.createClass({
+  mixins: [Catalyst.LinkedStateMixin],
+
   getInitialState: function() {
     return {
       fishes: {},
@@ -82,7 +86,7 @@ var App = React.createClass({
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order} />
-        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} fishes={this.state.fishes} linkState={this.linkState} />
       </div>
     );
   }
@@ -236,10 +240,31 @@ var Order = React.createClass({
   <Inventory>
 */
 var Inventory = React.createClass({
+  renderInventory: function(key) {
+    var linkState = this.props.linkState;
+    return (
+      <div className="fish-edit" key={key}>
+        <input type="text" valueLink={linkState('fishes.'+ key +'.name')}/>
+        <input type="text" valueLink={linkState('fishes.'+ key +'.price')}/>
+        <select value={linkState('fishes.' + key + '.status')}>
+          <option value="unavailable">Sold!</option>
+          <option value="available">Fresh!</option>
+        </select>
+        <textarea valueLink={linkState('fishes.'+ key +'.desc')}/>
+        <input type="text" valueLink={linkState('fishes.'+ key +'.image')}/>
+        <button>Remove!</button>
+      </div>
+    );
+  },
+
   render: function() {
     return (
       <div>
         <h2>Inventory</h2>
+
+        {/* Grab all the keys for fishes and over each call renderInventory */}
+        {Object.keys(this.props.fishes).map(this.renderInventory)}
+
         {/* use a "spread" to pass down the props of Inventory which contains the addFish function from App -
           use with some caution! try to just pass what you need */}
         <AddFishForm {...this.props} />
