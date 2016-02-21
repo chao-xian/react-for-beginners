@@ -12,9 +12,9 @@ var Inventory = React.createClass({
       <div className="fish-edit" key={key}>
         <input type="text" valueLink={linkState('fishes.'+ key +'.name')}/>
         <input type="text" valueLink={linkState('fishes.'+ key +'.price')}/>
-        <select value={linkState('fishes.' + key + '.status')}>
-          <option value="unavailable">Sold!</option>
-          <option value="available">Fresh!</option>
+      <select valueLink={linkState('fishes.' + key + '.status')}>
+          <option value="unavailable" readOnly>Sold!</option>
+          <option value="available" readOnly>Fresh!</option>
         </select>
         <textarea valueLink={linkState('fishes.'+ key +'.desc')}/>
         <input type="text" valueLink={linkState('fishes.'+ key +'.image')}/>
