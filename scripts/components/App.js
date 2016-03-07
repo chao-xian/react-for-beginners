@@ -1,10 +1,6 @@
 /*
   App
 */
-// Firebase
-import Rebase from 're-base';
-var base = Rebase.createClass('https://blazing-inferno-2155.firebaseio.com/');
-
 
 import React from 'react';
 import Catalyst from 'react-catalyst';
@@ -13,6 +9,10 @@ import Fish from './Fish';
 import AddFishForm from './AddFishForm';
 import Order from './Order';
 import Inventory from './Inventory';
+
+// Firebase
+import Rebase from 're-base';
+var base = Rebase.createClass('https://blazing-inferno-2155.firebaseio.com/');
 
 var App = React.createClass({
   mixins: [Catalyst.LinkedStateMixin],

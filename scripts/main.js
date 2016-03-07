@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route} from 'react-router';
+import { Router, Route } from 'react-router';
 
 // Import push state support so that we don't have React's ugly URLs
 import { createHistory } from 'history';
