@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Catalyst from 'react-catalyst';
-import Header from './Header';
+import { Header } from './Header';
 import Fish from './Fish';
 import AddFishForm from './AddFishForm';
 import Order from './Order';

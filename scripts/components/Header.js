@@ -1,11 +1,11 @@
-/*
+  /*
   Header
   <Header>
 */
 import React from 'react';
 
-var Header = React.createClass({
-  render: function() {
+export class Header extends React.Component {
+  render() {
     return (
       <header className="top">
         <h1>Catch
@@ -19,10 +19,9 @@ var Header = React.createClass({
         </h3>
       </header>
     );
-  },
-  propTypes: {
-    tagline: React.PropTypes.string.isRequired
   }
-});
+}
 
-export default Header;
+Header.propTypes = {
+  tagline: React.PropTypes.string.isRequired
+}
