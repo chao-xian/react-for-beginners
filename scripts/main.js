@@ -8,8 +8,8 @@ import { createHistory } from 'history';
 /*
   Import Components
 */
-import NotFound from './components/NotFound';
-import StorePicker from './components/StorePicker';
+import { NotFound } from './components/NotFound';
+import { StorePicker } from './components/StorePicker';
 import App from './components/App';
 
 /*
