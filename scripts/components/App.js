@@ -7,10 +7,10 @@ import Catalyst from 'react-catalyst';
 import reactMixin from 'react-mixin';
 import autobind from 'autobind-decorator';
 import { Header } from './Header';
-import Fish from './Fish';
-import AddFishForm from './AddFishForm';
+import { Fish } from './Fish';
+import { AddFishForm } from './AddFishForm';
 import Order from './Order';
-import Inventory from './Inventory';
+import { Inventory } from './Inventory';
 // Firebase
 import Rebase from 're-base';
 var base = Rebase.createClass('https://blazing-inferno-2155.firebaseio.com/');
